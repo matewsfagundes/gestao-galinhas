@@ -1,5 +1,7 @@
 package gestaogalinha.br.com.gestaogalinhas.galinha.application.api;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 public interface GalinhaAPI {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	GalinhaResponse postGalinha(@RequestBody GalinhaRequest galinhaRequest);
+	GalinhaResponse postGalinha(@Valid @RequestBody GalinhaRequest galinhaRequest);
 }
