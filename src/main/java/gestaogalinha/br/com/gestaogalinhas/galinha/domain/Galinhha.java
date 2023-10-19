@@ -1,4 +1,4 @@
-package gestaogalinha.br.com.gestaogalinhas.domain;
+package gestaogalinha.br.com.gestaogalinhas.galinha.domain;
 
 import java.time.LocalDate;
 import java.util.UUID;
