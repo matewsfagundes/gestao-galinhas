@@ -1,5 +1,7 @@
 package gestaogalinha.br.com.gestaogalinhas.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import gestaogalinha.br.com.gestaogalinhas.galinha.domain.Galinha;
@@ -20,6 +22,13 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 		galinhaSpringDataJPArepository.save(galinha);
 		log.info("[finaliza] GalinhaInfraRepository - salva");
 		return galinha;
+	}
+
+	@Override
+	public List<Galinha> buscaTodasGalinhas() {
+		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
+		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
+		return null;
 	}
 
 }
