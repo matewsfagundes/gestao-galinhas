@@ -27,8 +27,9 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 	@Override
 	public List<Galinha> buscaTodasGalinhas() {
 		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
+		List<Galinha> todasGalinhas = galinhaSpringDataJPArepository.findAll();
 		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
-		return null;
+		return todasGalinhas;
 	}
 
 }
