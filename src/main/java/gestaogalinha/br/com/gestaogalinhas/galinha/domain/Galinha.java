@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
-public class Galinhha {
+public class Galinha {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
@@ -28,9 +29,9 @@ public class Galinhha {
 	@NotNull
 	private LocalDate dataNascimento;
 
-	private Galinhha(UUID idCliente, @NotBlank String nome, @NotNull LocalDate dataNascimento) {
-		this.nome = nome;
-		this.dataNascimento = dataNascimento;
+	public Galinha(GalinhaRequest galinhaRequest) {
+		this.nome = galinhaRequest.getNome();
+		this.dataNascimento = galinhaRequest.getDataNascimento();
 	}
 
 }
