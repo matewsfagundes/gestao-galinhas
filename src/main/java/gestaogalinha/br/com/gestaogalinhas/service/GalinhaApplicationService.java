@@ -1,7 +1,10 @@
 package gestaogalinha.br.com.gestaogalinhas.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaListResponse;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaRequest;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaResponse;
 import gestaogalinha.br.com.gestaogalinhas.galinha.domain.Galinha;
@@ -23,6 +26,13 @@ public class GalinhaApplicationService implements GalinhaService {
 		return GalinhaResponse.builder()
 				.idCliente(galinha.getIdCliente())
 				.build();
+	}
+
+	@Override
+	public List<GalinhaListResponse> buscaTodasGalinhas() {
+		log.info("[inicia] GalinhaApplicationService - buscaTodasGalinhas");
+		log.info("[finaliza] GalinhaApplicationService - buscaTodasGalinhas");
+				return null;
 	}
 
 }
