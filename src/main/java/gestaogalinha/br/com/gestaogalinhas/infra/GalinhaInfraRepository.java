@@ -1,10 +1,13 @@
 package gestaogalinha.br.com.gestaogalinhas.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import gestaogalinha.br.com.gestaogalinhas.galinha.domain.Galinha;
+import gestaogalinha.br.com.gestaogalinhas.handler.APIException;
 import gestaogalinha.br.com.gestaogalinhas.repository.GalinhaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -30,6 +33,15 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 		List<Galinha> todasGalinhas = galinhaSpringDataJPArepository.findAll();
 		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
 		return todasGalinhas;
+	}
+
+	@Override
+	public Galinha buscaGalinhaAtravesId(UUID idGalinha) {
+		log.info("[inicia] GalinhaInfraRepository - buscaGalinhaAtravesId");
+		Galinha galinha = galinhaSpringDataJPArepository.findById(idGalinha).orElseThrow(()->
+		APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
+		return galinha;
 	}
 
 }
