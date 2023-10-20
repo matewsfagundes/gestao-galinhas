@@ -1,5 +1,7 @@
 package gestaogalinha.br.com.gestaogalinhas.galinha.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import gestaogalinha.br.com.gestaogalinhas.service.GalinhaService;
@@ -14,10 +16,17 @@ public class GalinhaController implements GalinhaAPI {
 
 	@Override
 	public GalinhaResponse postGalinha(GalinhaRequest galinhaRequest) {
-		log.info("[inicia] GalinhaResponse - postGalinha");
+		log.info("[inicia] GalinhaController - postGalinha");
 		GalinhaResponse galinhaCriada = galinhaService.criaGalinha(galinhaRequest);
 		log.info("[finaliza] GalinhaResponse - postGalinha");
 		return galinhaCriada;
+	}
+
+	@Override
+	public List<GalinhaListResponse> getTodasGalinhas() {
+		log.info("[inicia] GalinhaController - getTodasGalinhas");
+		log.info("[finaliza] GalinhaController - getTodasGalinhas");
+		return null;
 	}
 
 }
