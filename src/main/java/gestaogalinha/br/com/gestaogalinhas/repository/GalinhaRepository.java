@@ -10,4 +10,5 @@ public interface GalinhaRepository {
 
 	List<Galinha> buscaTodasGalinhas();
 
+
 }
