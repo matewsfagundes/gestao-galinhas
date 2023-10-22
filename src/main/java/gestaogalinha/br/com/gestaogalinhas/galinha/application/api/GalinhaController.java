@@ -3,6 +3,8 @@ package gestaogalinha.br.com.gestaogalinhas.galinha.application.api;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import gestaogalinha.br.com.gestaogalinhas.service.GalinhaService;
@@ -46,8 +48,16 @@ public class GalinhaController implements GalinhaAPI {
 		log.info("[idGalinha]{}", idGalinha);
 		galinhaService.deletaGalinhaAtravesId(idGalinha);
 		log.info("[finaliza] GalinhaController - DeletaGalinhaAtravesid");
-		
-		
+
+	}
+
+	@Override
+	public void patchAlteraGalinha(UUID idGalinha, @Valid GalinhaAlteracaoRequest galinhaAlteracaoRequest) {
+		log.info("[inicia] GalinhaController - patchAlteraCliente");
+		log.info("[idGalinha]{}", idGalinha);
+		galinhaService.patchAlteraGalinha(idGalinha,galinhaAlteracaoRequest);
+		log.info("[finaliza] GalinhaController - patchAlteraCliente");
+
 	}
 
 }

@@ -3,6 +3,7 @@ package gestaogalinha.br.com.gestaogalinhas.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,11 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 	@Override
 	public Galinha salva(Galinha galinha) {
 		log.info("[inicia] GalinhaInfraRepository - salva");
-		galinhaSpringDataJPArepository.save(galinha);
+		try {
+			galinhaSpringDataJPArepository.save(galinha);
+		} catch (DataIntegrityViolationException e) {
+			throw APIException.build(HttpStatus.BAD_REQUEST, "existem dados duplicados", e);
+		}
 		log.info("[finaliza] GalinhaInfraRepository - salva");
 		return galinha;
 	}
@@ -38,8 +43,8 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 	@Override
 	public Galinha buscaGalinhaAtravesId(UUID idGalinha) {
 		log.info("[inicia] GalinhaInfraRepository - buscaGalinhaAtravesId");
-		Galinha galinha = galinhaSpringDataJPArepository.findById(idGalinha).orElseThrow(()->
-		APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+		Galinha galinha = galinhaSpringDataJPArepository.findById(idGalinha)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
 		return galinha;
 	}
@@ -48,7 +53,7 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 	public void deletaGalinhaAtravesId(Galinha galinha) {
 		log.info("[inicia] GalinhaInfraRepository - deletaGalinhaAtravesId");
 		galinhaSpringDataJPArepository.delete(galinha);
-		log.info("[finaliza] GalinhaInfraRepository - deletaGalinhaAtravesId");	
+		log.info("[finaliza] GalinhaInfraRepository - deletaGalinhaAtravesId");
 	}
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaAlteracaoRequest;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -31,6 +32,11 @@ public class Galinha {
 	private LocalDate dataNascimento;
 
 	public Galinha(GalinhaRequest galinhaRequest) {
+		this.nome = galinhaRequest.getNome();
+		this.dataNascimento = galinhaRequest.getDataNascimento();
+	}
+
+	public void altera(GalinhaAlteracaoRequest galinhaRequest) {
 		this.nome = galinhaRequest.getNome();
 		this.dataNascimento = galinhaRequest.getDataNascimento();
 	}

@@ -3,8 +3,11 @@ package gestaogalinha.br.com.gestaogalinhas.service;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
+import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaAlteracaoRequest;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaDetalhadoResponse;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaListResponse;
 import gestaogalinha.br.com.gestaogalinhas.galinha.application.api.GalinhaRequest;
@@ -51,6 +54,16 @@ public class GalinhaApplicationService implements GalinhaService {
 		Galinha galinha = galinhaRepository.buscaGalinhaAtravesId(idGalinha);
 		galinhaRepository.deletaGalinhaAtravesId(galinha);
 		log.info("[finaliza] GalinhaApplicationService - deletaGalinhaAtravesId");
+	}
+
+	@Override
+	public void patchAlteraGalinha(UUID idGalinha, @Valid GalinhaAlteracaoRequest galinhaAlteracaoRequest) {
+		log.info("[inicia] GalinhaApplicationService - patchAlteraGalinha");
+		Galinha galinha = galinhaRepository.buscaGalinhaAtravesId(idGalinha);
+		galinha.altera(galinhaAlteracaoRequest);
+		galinhaRepository.salva(galinha);
+		log.info("[finaliza] GalinhaApplicationService - patchAlteraGalinha");
+
 	}
 
 }
