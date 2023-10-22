@@ -34,7 +34,7 @@ public class GalinhaController implements GalinhaAPI {
 	@Override
 	public GalinhaDetalhadoResponse getGalinhaAtravesId(UUID idGalinha) {
 		log.info("[inicia] GalinhaController - getGalinhaAtravesId");
-		log.info("[idGalinha]{}, idGalinha");
+		log.info("[idGalinha]{}", idGalinha);
 		GalinhaDetalhadoResponse galinhaDetalhado = galinhaService.buscaGalinhaAtravesId(idGalinha);
 		log.info("[finaliza] GalinhaController - getGalinhaAtravesId");
 		return galinhaDetalhado;
@@ -43,8 +43,10 @@ public class GalinhaController implements GalinhaAPI {
 	@Override
 	public void DeletaGalinhaAtravesid(UUID idGalinha) {
 		log.info("[inicia] GalinhaController - DeletaGalinhaAtravesid");
-		log.info("[idGalinha]{}, idGalinha");
+		log.info("[idGalinha]{}", idGalinha);
+		galinhaService.deletaGalinhaAtravesId(idGalinha);
 		log.info("[finaliza] GalinhaController - DeletaGalinhaAtravesid");
+		
 		
 	}
 

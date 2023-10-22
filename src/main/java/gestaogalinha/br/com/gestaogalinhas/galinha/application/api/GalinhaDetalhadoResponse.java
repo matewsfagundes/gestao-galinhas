@@ -9,12 +9,12 @@ import lombok.Value;
 @Value
 public class GalinhaDetalhadoResponse {
 
-	private UUID idCliente;
+	private UUID idGalinha;
 	private String nome;
 	private LocalDate dataNascimento;
 
 	public GalinhaDetalhadoResponse(Galinha galinha) {
-		this.idCliente = galinha.getIdCliente();
+		this.idGalinha = galinha.getIdGalinha();
 		this.nome = galinha.getNome();
 		this.dataNascimento = galinha.getDataNascimento();
 

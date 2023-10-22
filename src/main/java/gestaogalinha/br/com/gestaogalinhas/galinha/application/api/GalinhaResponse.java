@@ -7,6 +7,6 @@ import lombok.Value;
 @Value
 @Builder
 public class GalinhaResponse {
-	private UUID idCliente;
+	private UUID idGalinha;
 
 }

@@ -23,7 +23,7 @@ public class Galinha {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
-	private UUID idCliente;
+	private UUID idGalinha;
 	@NotBlank
 	private String nome;
 	@NotNull
