@@ -31,7 +31,7 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 	public List<Galinha> buscaTodasGalinhas() {
 		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
 		List<Galinha> todasGalinhas = galinhaSpringDataJPArepository.findAll();
-		log.info("[inicia] GalinhaInfraRepository - buscaTodasGalinhas");
+		log.info("[finaliza] GalinhaInfraRepository - buscaTodasGalinhas");
 		return todasGalinhas;
 	}
 
@@ -42,6 +42,13 @@ public class GalinhaInfraRepository implements GalinhaRepository {
 		APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
 		return galinha;
+	}
+
+	@Override
+	public void deletaGalinhaAtravesId(Galinha galinha) {
+		log.info("[inicia] GalinhaInfraRepository - deletaGalinhaAtravesId");
+		galinhaSpringDataJPArepository.delete(galinha);
+		log.info("[finaliza] GalinhaInfraRepository - deletaGalinhaAtravesId");	
 	}
 
 }

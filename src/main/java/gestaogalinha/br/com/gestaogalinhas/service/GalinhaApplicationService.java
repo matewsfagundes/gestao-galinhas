@@ -49,6 +49,7 @@ public class GalinhaApplicationService implements GalinhaService {
 	public void deletaGalinhaAtravesId(UUID idGalinha) {
 		log.info("[inicia] GalinhaApplicationService - deletaGalinhaAtravesId");
 		Galinha galinha = galinhaRepository.buscaGalinhaAtravesId(idGalinha);
+		galinhaRepository.deletaGalinhaAtravesId(galinha);
 		log.info("[finaliza] GalinhaApplicationService - deletaGalinhaAtravesId");
 	}
 
